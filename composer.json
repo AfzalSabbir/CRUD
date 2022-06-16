@@ -1,5 +1,5 @@
 {
-    "name": "afzalsabbir/crud",
+    "name": "backpack/crud",
     "type": "library",
     "description": "Quickly build an admin interfaces using Laravel, CoreUI, Bootstrap and jQuery.",
     "keywords": [
@@ -21,7 +21,7 @@
         "content management system",
         "content management framework"
     ],
-    "homepage": "https://github.com/afzalsabbir/backpack-crud",
+    "homepage": "https://github.com/laravel-backpack/CRUD",
     "license": "MIT",
     "authors": [
         {
@@ -32,7 +32,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^9.0|^8.0|^7.0|^6.0",
+        "laravel/framework": "^9.0|^8.26",
         "prologue/alerts": "^1.0|^0.4",
         "digitallyhappy/assets": "^2.0.1",
         "creativeorange/gravatar": "~1.0",
