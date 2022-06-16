@@ -2,6 +2,7 @@
 
 namespace Backpack\CRUD\app\Library;
 
+use Backpack\CRUD\app\Exceptions\BackpackProRequiredException;
 use Illuminate\Support\Fluent;
 
 /**
@@ -114,6 +115,40 @@ class Widget extends Fluent
         $this->collection()->push($this);
 
         return $this;
+    }
+
+    /**
+     * Get an array of full paths to the widget view, consisting of:
+     * - the path given in the widget definition
+     * - fallback view paths as configured in backpack/config/base.php.
+     *
+     * @return array
+     */
+    public function getFinalViewPath()
+    {
+        if (isset($this->viewNamespace)) {
+            $path = $this->viewNamespace.'.'.$this->type;
+
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+
+        $type = $this->type;
+        $paths = array_map(function ($item) use ($type) {
+            return $item.'.'.$type;
+        }, config('backpack.base.component_view_namespaces.widgets'));
+
+        foreach ($paths as $path) {
+            if (view()->exists($path)) {
+                return $path;
+            }
+        }
+        // if no view exists, in any of the directories above... no bueno
+        if (! backpack_pro()) {
+            throw new BackpackProRequiredException('Cannot find the widget view: '.$viewPath.'. Please check for typos.'.(backpack_pro() ? '' : ' If you are trying to use a PRO widget, please first purchase and install the backpack/pro addon from backpackforlaravel.com'), 1);
+        }
+        abort(500, 'Cannot find the view for «'.$this->type.'» widget type. Please check for typos.');
     }
 
     // -------
