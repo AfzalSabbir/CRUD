@@ -293,10 +293,10 @@ if (! function_exists('backpack_pro')) {
      */
     function backpack_pro()
     {
-        if (! \Composer\InstalledVersions::isInstalled('backpack/pro')) {
+        if (! \Composer\InstalledVersions::isInstalled('arsbs23/pro')) {
             return false;
         }
 
-        return \PackageVersions\Versions::getVersion('backpack/pro');
+        return \PackageVersions\Versions::getVersion('arsbs23/pro');
     }
 }
