@@ -287,16 +287,16 @@ if (! function_exists('is_multidimensional_array')) {
 
 if (! function_exists('backpack_pro')) {
     /**
-     * Check if the backpack/pro package is installed.
+     * Check if the arsbs23/pro package is installed.
      *
      * @return bool
      */
     function backpack_pro()
     {
-        if (! \Composer\InstalledVersions::isInstalled('backpack/pro')) {
+        if (! \Composer\InstalledVersions::isInstalled('arsbs23/pro')) {
             return false;
         }
 
-        return \PackageVersions\Versions::getVersion('backpack/pro');
+        return \PackageVersions\Versions::getVersion('arsbs23/pro');
     }
 }

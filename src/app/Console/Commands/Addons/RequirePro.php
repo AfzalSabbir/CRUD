@@ -34,7 +34,7 @@ class RequirePro extends Command
         'description' => [
             'Adds 5 operations, 10 filters, 28 fields, 6 columns, charts',
         ],
-        'path' => 'vendor/backpack/pro',
+        'path' => 'vendor/arsbs23/pro',
         'command' => 'backpack:require:pro',
     ];
 
@@ -68,7 +68,7 @@ class RequirePro extends Command
 
         // Require package
         try {
-            $this->composerRequire('backpack/pro');
+            $this->composerRequire('arsbs23/pro');
         } catch (\Throwable $e) {
             $this->errorProgressBlock();
             $this->line('  '.$e->getMessage(), 'fg=red');
