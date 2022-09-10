@@ -110,7 +110,7 @@ if (! function_exists('backpack_avatar_url')) {
     {
         switch (config('backpack.base.avatar_type')) {
             case 'gravatar':
-                if (backpack_users_have_email()) {
+                if (backpack_users_have_email() && ! empty($user->email)) {
                     return Gravatar::fallback(config('backpack.base.gravatar_fallback'))->get($user->email);
                 }
                 break;
@@ -287,7 +287,7 @@ if (! function_exists('is_multidimensional_array')) {
 
 if (! function_exists('backpack_pro')) {
     /**
-     * Check if the backpack/pro package is installed.
+     * Check if the arsbs23/pro package is installed.
      *
      * @return bool
      */
