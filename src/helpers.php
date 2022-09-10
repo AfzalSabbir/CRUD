@@ -110,7 +110,7 @@ if (! function_exists('backpack_avatar_url')) {
     {
         switch (config('backpack.base.avatar_type')) {
             case 'gravatar':
-                if (backpack_users_have_email()) {
+                if (backpack_users_have_email() && ! empty($user->email)) {
                     return Gravatar::fallback(config('backpack.base.gravatar_fallback'))->get($user->email);
                 }
                 break;
@@ -293,10 +293,10 @@ if (! function_exists('backpack_pro')) {
      */
     function backpack_pro()
     {
-        if (! \Composer\InstalledVersions::isInstalled('arsbs23/pro')) {
+        if (! \Composer\InstalledVersions::isInstalled('backpack/pro')) {
             return false;
         }
 
-        return \PackageVersions\Versions::getVersion('arsbs23/pro');
+        return \PackageVersions\Versions::getVersion('backpack/pro');
     }
 }
